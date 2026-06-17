@@ -59,13 +59,54 @@ main { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
     gap: 1.25rem; /* Tightened gap system for airier grids */
 }
 
-/* UNIVERSAL RESPONSIVE COMPRESSION */
+/* UNIVERSAL RESPONSIVE COMPRESSION & ALIGNMENT FIX */
 @media (max-width: 768px) {
-    header { padding: 1.75rem 1.25rem; }
-    .filter-bar { padding: 0.85rem 1.25rem; }
-    .filter-container { flex-direction: column; gap: 0.75rem; }
-    .filter-group { flex-direction: row; width: 100%; }
-    .filter-group .custom-dropdown { flex: 1; }
-    main { padding: 0 1.25rem; margin: 1.5rem auto; }
-    #property-container { gap: 1rem; } /* Closer card clustering on small screens */
+    header { 
+        padding: 1.75rem 1.25rem; 
+    }
+    .filter-bar { 
+        padding: 0.85rem 1.25rem; 
+    }
+    
+    /* Forces search input and dropdown group to stack evenly */
+    .filter-container { 
+        flex-direction: column; 
+        gap: 0.65rem; 
+        width: 100%;
+    }
+    
+    /* Fixes the search box width on mobile viewports */
+    .search-box {
+        width: 100%;
+        min-width: 100%;
+    }
+    
+    /* Spreads both dropdowns evenly across a single row on mobile screens */
+    .filter-group { 
+        display: flex;
+        flex-direction: row; 
+        gap: 0.65rem;
+        width: 100%; 
+    }
+    
+    /* Forces the custom dropdown containers to fill exactly half the row each */
+    .filter-group .custom-dropdown { 
+        flex: 1; 
+        min-width: 0; /* Prevents text overflow blowouts */
+    }
+    
+    /* Stretches buttons to fill their parent container nicely */
+    .dropdown-trigger {
+        width: 100%;
+        min-width: 100%;
+        padding: 0.8rem 0.85rem; /* Slightly compact side-paddings for narrow screens */
+    }
+
+    main { 
+        padding: 0 1.25rem; 
+        margin: 1.5rem auto; 
+    }
+    #property-container { 
+        gap: 1.25rem; 
+    }
 }

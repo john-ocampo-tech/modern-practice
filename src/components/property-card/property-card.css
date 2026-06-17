@@ -162,11 +162,23 @@
     margin-top: auto; 
     padding: 0 1.1rem 1.1rem 1.1rem; /* Left/Right matches the body padding exactly */
 }
+
 .card-developer { 
-    font-size: 0.725rem; 
-    color: #94a3b8; 
+    font-size: 0.775rem; /* Bumped up from 0.725rem */
+    color: #475569; /* Swapped from invisible gray to high-contrast slate-600 */
     text-align: left; 
-    font-weight: 400; 
+    font-weight: 500; /* Shifted from 400 to medium weight to anchor the typography */
     margin: 0;
     letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Subtle accent token style specifically for the developer's brand name */
+.card-developer::before {
+    content: "•";
+    color: #a5b4fc; /* Matching your beautiful Indigo spec icon details */
+    font-weight: bold;
+    margin-right: 0.15rem;
 }
