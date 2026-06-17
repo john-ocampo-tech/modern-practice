@@ -1,0 +1,172 @@
+@keyframes fadeInUp { 
+    from { opacity: 0; transform: translateY(16px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+/* THE ULTIMATE PRO PROPERTY CARD (Optimized Scale) */
+.property-card {
+    background: #ffffff; 
+    border: 1px solid #f1f5f9; /* Ultra-soft clean border */
+    border-radius: 16px; /* Slightly tighter luxury roundness for compact scaling */
+    display: flex;
+    flex-direction: column; 
+    overflow: hidden; 
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0; 
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s ease; 
+    cursor: pointer; 
+    position: relative;
+    height: 100%;
+    /* Soft, multi-layered depth shadow */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.01),
+                0 20px 25px -5px rgba(0, 0, 0, 0.02);
+}
+
+/* The Hover Effect: Smooth lift + ambient soft glow */
+.property-card:hover {
+    transform: translateY(-5px); /* Balanced lift for smaller scale */
+    border-color: #e2e8f0;
+    box-shadow: 0 16px 20px -5px rgba(15, 23, 42, 0.04), 
+                0 8px 8px -5px rgba(15, 23, 42, 0.01);
+}
+
+/* Image Container */
+.card-image { 
+    position: relative; 
+    width: 100%;
+    /* Uses aspect ratio instead of a rigid 240px height to scale beautifully anywhere */
+    aspect-ratio: 16 / 10; 
+    overflow: hidden; 
+    background-color: #f8fafc;
+}
+
+/* Super smooth image scale on hover */
+.card-image img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+.property-card:hover .card-image img { 
+    transform: scale(1.04); 
+}
+
+/* Subtle elegant shadow gradient over image base */
+.card-image-overlay { 
+    position: absolute; 
+    top: 0; left: 0; right: 0; bottom: 0; 
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.06) 0%, transparent 40%); 
+    z-index: 2; 
+}
+
+/* Premium Unit Type Badge */
+.card-image .card-badge { 
+    position: absolute; 
+    top: 1rem; 
+    left: 1rem; 
+    z-index: 3; 
+}
+.card-badge span { 
+    background-color: rgba(255, 255, 255, 0.92); 
+    backdrop-filter: blur(8px);
+    color: #0f172a; 
+    padding: 0.35rem 0.7rem; 
+    border-radius: 30px; /* Pill shape */
+    font-size: 0.725rem; 
+    font-weight: 600; 
+    white-space: nowrap; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+    letter-spacing: -0.01em;
+}
+
+/* Action Button: Blurred premium overlay style */
+.card-hover-btn { 
+    position: absolute; 
+    bottom: 1rem; 
+    left: 1rem; 
+    right: 1rem; 
+    background-color: #0f172a;
+    color: #ffffff; 
+    border: none; 
+    padding: 0.75rem; /* Tightened interactive action target */
+    border-radius: 10px; 
+    font-family: 'Inter', sans-serif; 
+    font-weight: 500; 
+    font-size: 0.8rem; 
+    cursor: pointer; 
+    z-index: 3; 
+    text-align: center; 
+    transform: translateY(10px); 
+    opacity: 0; 
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.property-card:hover .card-hover-btn { 
+    transform: translateY(0); 
+    opacity: 1; 
+}
+.card-hover-btn:hover { 
+    background-color: #1e293b;
+}
+
+/* Card Content Layout */
+.card-body { 
+    padding: 1.1rem 1.1rem 0.85rem 1.1rem; /* Compact layout breathing room */
+    display: flex; 
+    flex-direction: column; 
+    flex-grow: 1; 
+}
+.card-title { 
+    font-size: 1.1rem; /* Downscaled from 1.3rem to fit cleaner inside grids */
+    font-weight: 700; 
+    color: #0f172a; 
+    margin: 0 0 0.35rem 0; 
+    line-height: 1.35; 
+    letter-spacing: -0.01em; 
+}
+.card-location { 
+    font-size: 0.8rem; 
+    color: #64748b; 
+    margin: 0 0 1.1rem 0; 
+    font-weight: 450; 
+    display: flex; 
+    align-items: center; 
+    gap: 0.35rem; 
+}
+.card-location svg { 
+    flex-shrink: 0; 
+    color: #94a3b8; 
+    width: 14px;
+    height: 14px;
+}
+
+/* Micro Specs Layout */
+.card-specs { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 1rem; 
+    padding-top: 1.1rem; 
+    border-top: 1px solid #f1f5f9; 
+}
+.spec-item { display: flex; align-items: center; gap: 0.55rem; }
+.spec-icon { color: #a5b4fc; flex-shrink: 0; width: 16px; height: 16px; } 
+.spec-details { display: flex; flex-direction: column; }
+.spec-label { font-size: 0.6rem; color: #94a3b8; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+.spec-value { font-size: 0.85rem; color: #334155; font-weight: 600; margin-top: 0.05rem; }
+
+/* The Footer: Perfectly balanced padding */
+.card-footer { 
+    margin-top: auto; 
+    padding: 0 1.1rem 1.1rem 1.1rem; /* Left/Right matches the body padding exactly */
+}
+.card-developer { 
+    font-size: 0.725rem; 
+    color: #94a3b8; 
+    text-align: left; 
+    font-weight: 400; 
+    margin: 0;
+    letter-spacing: -0.01em;
+}

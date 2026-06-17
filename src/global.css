@@ -1,0 +1,71 @@
+/* ==========================================
+   ULTRA-PREMIUM LIGHT THEME (Global Baseline)
+   ========================================== */
+:root {
+    /* Set standard compact scale for mobile viewports */
+    font-size: 14px; 
+}
+
+@media (min-width: 1024px) {
+    :root {
+        /* Drop from standard 16px to 15px to make the layout look cleaner on laptops */
+        font-size: 15px; 
+    }
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #fcfcfd; /* Warm ultra-light gray */
+    color: #1e293b;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+header { 
+    background-color: #ffffff; 
+    border-bottom: 1px solid #e2e8f0;
+    padding: 2rem 2rem; /* Slid down padding slightly to balance size */
+}
+.header-content { max-width: 1200px; margin: 0 auto; }
+header h1 { font-size: 1.55rem; font-weight: 700; margin: 0; color: #0f172a; letter-spacing: -0.02em; display: flex; align-items: center; gap: 0.75rem; }
+header h1 svg { color: #0f172a; } /* Monochromatic accent */
+header p { margin: 0.35rem 0 0 0; font-size: 0.875rem; color: #64748b; font-weight: 400; padding-left: 2.2rem; }
+
+.filter-bar { 
+    background-color: #ffffff; 
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.85rem 2rem; /* Sharper, tighter bar height */
+    position: sticky; 
+    top: 0; 
+    z-index: 10; 
+    background: rgba(255, 255, 255, 0.8); 
+    backdrop-filter: blur(20px); 
+}
+.filter-container { max-width: 1200px; margin: 0 auto; display: flex; gap: 0.75rem; align-items: stretch; }
+
+main { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
+
+/* 💎 FLUID MATRIX PROPERTY GRID */
+#property-container { 
+    display: grid; 
+    /* Changed minmax from bulky 340px to 280px to scale clean on laptops and fit phone widths perfectly */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 1.25rem; /* Tightened gap system for airier grids */
+}
+
+/* UNIVERSAL RESPONSIVE COMPRESSION */
+@media (max-width: 768px) {
+    header { padding: 1.75rem 1.25rem; }
+    .filter-bar { padding: 0.85rem 1.25rem; }
+    .filter-container { flex-direction: column; gap: 0.75rem; }
+    .filter-group { flex-direction: row; width: 100%; }
+    .filter-group .custom-dropdown { flex: 1; }
+    main { padding: 0 1.25rem; margin: 1.5rem auto; }
+    #property-container { gap: 1rem; } /* Closer card clustering on small screens */
+}

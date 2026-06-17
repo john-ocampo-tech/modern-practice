@@ -1,10 +1,7 @@
-// ==========================================
-// 1. MODERN WAY: Import CSS directly into our JS! Vite handles it.
-// ==========================================
-import './style.css'
-
-import { fetchProperties } from './data.js';
-import { populateCustomDropdowns, renderProperties, applyFiltersUI } from './ui.js';
+import './global.css' // Global grid, body styles, variables
+import { fetchProperties } from './services/supabase.js';
+import { renderProperties } from './components/property-card/property-card.js';
+import { populateCustomDropdowns, triggerFiltering } from './components/filter-dropdown/filter-dropdown.js';
 
 async function init() {
     const container = document.getElementById('property-container');
@@ -17,17 +14,16 @@ async function init() {
             return;
         }
 
+        // Initialize features
         populateCustomDropdowns(properties);
         renderProperties(properties);
 
-        document.getElementById('search-input').addEventListener('input', applyFiltersUI);
+        // Bind global search bar listener
+        document.getElementById('search-input').addEventListener('input', triggerFiltering);
 
     } catch (err) {
-        container.innerHTML = '<p>Something went wrong.</p>';
+        container.innerHTML = '<p>Something went wrong loading application listings.</p>';
     }
 }
 
-// ==========================================
-// 7. RING THE STARTING BELL
-// ==========================================
 window.addEventListener('DOMContentLoaded', init);
